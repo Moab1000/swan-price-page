@@ -59,42 +59,56 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-gold: var(--gold);
+  --color-gold-foreground: var(--gold-foreground);
+  --color-blush: var(--blush);
+  --font-display: var(--font-display);
+  --font-sans: var(--font-body);
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
+  --radius: 0.9rem;
+  --background: oklch(0.985 0.008 20);
+  --foreground: oklch(0.25 0.045 340);
+  --card: oklch(0.998 0.004 20);
+  --card-foreground: oklch(0.25 0.045 340);
+  --popover: oklch(0.998 0.004 20);
+  --popover-foreground: oklch(0.25 0.045 340);
+  --primary: oklch(0.36 0.09 344);
+  --primary-foreground: oklch(0.985 0.008 20);
+  --secondary: oklch(0.955 0.018 20);
+  --secondary-foreground: oklch(0.36 0.09 344);
+  --muted: oklch(0.958 0.014 25);
+  --muted-foreground: oklch(0.52 0.03 340);
+  --accent: oklch(0.93 0.03 25);
+  --accent-foreground: oklch(0.32 0.07 344);
   --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --destructive-foreground: oklch(0.985 0.008 20);
+  --border: oklch(0.912 0.018 20);
+  --input: oklch(0.912 0.018 20);
+  --ring: oklch(0.7 0.06 344);
+  --gold: oklch(0.78 0.09 85);
+  --gold-foreground: oklch(0.3 0.05 60);
+  --blush: oklch(0.95 0.025 15);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+  --sidebar: oklch(0.985 0.008 20);
+  --sidebar-foreground: oklch(0.25 0.045 340);
+  --sidebar-primary: oklch(0.36 0.09 344);
+  --sidebar-primary-foreground: oklch(0.985 0.008 20);
+  --sidebar-accent: oklch(0.93 0.03 25);
+  --sidebar-accent-foreground: oklch(0.32 0.07 344);
+  --sidebar-border: oklch(0.912 0.018 20);
+  --sidebar-ring: oklch(0.7 0.06 344);
+  --gradient-hero: linear-gradient(160deg, oklch(0.985 0.012 20) 0%, oklch(0.955 0.028 15) 45%, oklch(0.93 0.035 340) 100%);
+  --gradient-gold: linear-gradient(100deg, oklch(0.82 0.07 85), oklch(0.72 0.1 60));
+  --shadow-soft: 0 1px 2px oklch(0.36 0.09 344 / 0.06), 0 12px 30px -18px oklch(0.36 0.09 344 / 0.35);
+  --shadow-lift: 0 2px 6px oklch(0.36 0.09 344 / 0.08), 0 26px 50px -24px oklch(0.36 0.09 344 / 0.45);
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Jost", system-ui, sans-serif;
 }
 
 .dark {
@@ -140,5 +154,41 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+  }
+}
+
+
+@layer base {
+  body {
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+@keyframes swan-rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+
+@utility animate-rise {
+  animation: swan-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@utility card-lift {
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease, border-color 0.45s ease;
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lift);
+    border-color: color-mix(in oklab, var(--primary) 30%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
   }
 }
